@@ -85,6 +85,10 @@ alias l='ls -CF'
 # For todo.txt
 export TODOTXT_DEFAULT_ACTION=ls
 alias t='/home/moosetheory/bin/todo.txt/todo.sh -d /home/moosetheory/bin/todo.txt/todo.cfg'
+# Auto-complete for todo.txt
+if [ -f /usr/local/Cellar/todo-txt/2.9/todo_completion ] && ! shopt -oq posix; then
+  . /usr/local/Cellar/todo-txt/2.9/todo_completion
+fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -105,3 +109,8 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+case $OSTYPE in darwin*)
+  # Add paths that Brew wants before OSX's default path.
+  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+esac
