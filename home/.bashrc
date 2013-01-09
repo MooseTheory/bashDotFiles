@@ -125,3 +125,4 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 alias homesick="$HOME/.homeshick"
+
