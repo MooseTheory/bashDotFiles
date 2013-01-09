@@ -3,6 +3,10 @@ if [ -f /etc/lsb_release ]; then
   . /etc/lsb_release
   osDistro=$DISTRIB_ID
   osVersion=$DISTRIB_RELEASE
+elif [ -f /etc/lsb-release ]; then
+  . /etc/lsb-release
+  osDistro=$DISTRIB_ID
+  osVersion=$DISTRIB_RELEASE
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   osDistro="OSX"
   osVersion="Unknown"
