@@ -123,3 +123,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # Copied from https://github.com/mathiasbynens/dotfiles/blob/master/.bash_profile
   complete -W "NSGlobalDomain" defaults
 fi
+
+alias homesick="$HOME/.homeshick"
