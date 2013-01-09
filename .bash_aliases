@@ -1,9 +1,4 @@
-alias install='sudo apt-get install'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get upgrade'
-alias canihaz='aptitude search'
-
-# Linux aliases
+# Detect the OS version (hopefully)
 if [ -f /etc/lsb_release ]; then
   . /etc/lsb_release
   osDistro=$DISTRIB_ID
@@ -16,6 +11,10 @@ fi
 case "$osDistro" in
   'Ubuntu')
     alias t='/home/moosetheory/bin/todo.txt/todo.sh -d /home/moosetheory/bin/todo.txt/todo.cfg'
+    alias install='sudo apt-get install'
+    alias update='sudo apt-get update'
+    alias upgrade='sudo apt-get upgrade'
+    alias canihaz='aptitude search'
     ;;
   'OSX')
 # OSX specific aliases.
@@ -24,3 +23,9 @@ case "$osDistro" in
   *)
     ;;
 esac
+
+# Aliases for all the things.
+alias sudo='sudo '
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_STORE' -ls -delete"

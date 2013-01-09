@@ -110,7 +110,16 @@ if [ -f /usr/local/Cellar/todo-txt/2.9/todo_completion ] && ! shopt -oq posix; t
   . /usr/local/Cellar/todo-txt/2.9/todo_completion
 fi
 
+# Add '~/bin' to the PATH
+export PATH="$HOME/bin:$PATH"
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards.
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # Add paths that Brew wants before OSX's default path.
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+  # Add tab completion for 'defaults read|write NSGlobalDomain'
+  # Copied from https://github.com/mathiasbynens/dotfiles/blob/master/.bash_profile
+  complete -W "NSGlobalDomain" defaults
 fi
