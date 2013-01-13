@@ -7,6 +7,9 @@ elif [ -f /etc/lsb-release ]; then
   . /etc/lsb-release
   osDistro=$DISTRIB_ID
   osVersion=$DISTRIB_RELEASE
+elif [ -f /etc/arch-release ]; then
+  osDistro="Arch"
+  osVersion="Rolling"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   osDistro="OSX"
   osVersion="Unknown"
@@ -19,6 +22,14 @@ case "$osDistro" in
     alias update='sudo apt-get update'
     alias upgrade='sudo apt-get upgrade'
     alias canihaz='aptitude search'
+    alias canhaz='aptitude search'
+    ;;
+  'Arch')
+    alias install='sudo pacman -S'
+    alias update='sudo pacman -Sy'
+    alias upgrade='sudo pacman -Syu'
+    alias canhaz='sudo pacman -Ss'
+    alias canihaz='sudo pacman -Ss'
     ;;
   'OSX')
 # OSX specific aliases.
