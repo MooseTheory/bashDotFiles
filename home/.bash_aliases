@@ -28,8 +28,8 @@ case "$osDistro" in
     alias install='sudo pacman -S'
     alias update='sudo pacman -Sy'
     alias upgrade='sudo pacman -Syu'
-    alias canhaz='sudo pacman -Ss'
-    alias canihaz='sudo pacman -Ss'
+    alias canhaz='pacman -Ss'
+    alias canihaz='pacman -Ss'
     ;;
   'OSX')
 # OSX specific aliases.
