@@ -9,7 +9,7 @@ case "$OS_DISTRO" in
     ;;
   'OSX')
     # Auto-complete for todo.txt
-    if [-f /usr/local/Cellar/todo-txt/2.9/todo_completion ] && ! shopt -oq posix; then
+    if [ -f /usr/local/Cellar/todo-txt/2.9/todo_completion ] && ! shopt -oq posix; then
       . /usr/local/Cellar/todo-txt/2.9/todo_completion
     fi
 
