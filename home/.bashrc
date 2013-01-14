@@ -77,18 +77,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# For todo.txt
-export TODOTXT_DEFAULT_ACTION=ls
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -105,24 +93,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# Auto-complete for todo.txt
-if [ -f /usr/local/Cellar/todo-txt/2.9/todo_completion ] && ! shopt -oq posix; then
-  . /usr/local/Cellar/todo-txt/2.9/todo_completion
-fi
-
-# Add '~/bin' to the PATH
-export PATH="$HOME/bin:$PATH"
-
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards.
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  # Add paths that Brew wants before OSX's default path.
-  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-  # Add tab completion for 'defaults read|write NSGlobalDomain'
-  # Copied from https://github.com/mathiasbynens/dotfiles/blob/master/.bash_profile
-  complete -W "NSGlobalDomain" defaults
-fi
-
-alias homesick="$HOME/.homeshick"
-
+# Source all of the scripts in my .bash_profile.d folder.
+# Idea totally taken from https://github.com/technicalpickles/dotpickles/
+files=$(ls ~/.bash_profile.d/private/*.sh ~/.bash_profile.d/*.sh 2>/dev/null)
+for file in ${files}; do
+  source ${file}
+done
