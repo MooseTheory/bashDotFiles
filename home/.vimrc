@@ -32,6 +32,24 @@ call matchadd('ColorColumn', '\%81v', 100)
 " Remap semicolon to colon.
 nnoremap ; :
 
+" Make unnecessary whitespace more obvious.
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
+
+" Automatically remove trailing whitespace on write.
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Make .aspx files highlight and indent as html files.
+au BufRead,BufNewFile *.aspx set filetype=html
+
+" Fix backspace in cygwin.
+if has('unix')
+  let s:uname = system('uname -o')
+  if s:uname == "Cygwin\n"
+    set backspace=indent,eol,start
+  endif
+endif
+
 " Enable pathogen.vim
 execute pathogen#infect()
 
@@ -43,9 +61,16 @@ function! LastModified()
     let save_cursor = getpos(".")
     let n = min([20, line("$")])
     keepjumps exe '1,' . n . 's#^\(.\{,10}Last modified: \).*#\1' .
-                            \ strftime('%a %b %d, %Y  %I:%M%p') . '#e'
+          \ strftime('%a %b %d, %Y  %I:%M%p') . '#e'
     call histdel('search', -1)
     call setpos('.', save_cursor)
   endif
 endfun
 autocmd BufWritePre * call LastModified()
+
+" Turn on line numbers
+" run "set number!" to turn that off.
+set number
+
+" Show the bottom status bar always.
+set laststatus=2
