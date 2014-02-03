@@ -7,3 +7,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Clear the screen and ls.
 alias cls="clear && ls"
+
+# Change directory and ls.
+function cs() {
+  cd "$@" && ls
+}
