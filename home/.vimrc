@@ -74,3 +74,6 @@ set number
 
 " Show the bottom status bar always.
 set laststatus=2
+
+" Make my localdeploy script run every time I write to my JS or ASPX file.
+autocmd BufWritePost SetupPolling.* !./localdeploy.sh

@@ -15,4 +15,7 @@ elif [ -f /etc/arch-release ]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   export OS_DISTRO="OSX"
   export OS_VERSION="Unknown"
+elif [[ "$OSTYPE" == "cygwin"* ]]; then
+  export OS_DISTRO="cygwin"
+  export OS_VERSION="Unknown"
 fi
