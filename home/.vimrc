@@ -77,3 +77,9 @@ set laststatus=2
 
 " Make my localdeploy script run every time I write to my JS or ASPX file.
 autocmd BufWritePost SetupPolling.* !./localdeploy.sh
+
+" Go Language vim compiler plugin
+autocmd FileType go compiler go
+
+" Go language gofmt
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
