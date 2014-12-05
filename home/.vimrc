@@ -50,9 +50,6 @@ if has('unix')
   endif
 endif
 
-" Enable pathogen.vim
-execute pathogen#infect()
-
 " If buffer modified, update any 'Last modified: ' in the first 20 lines.
 " 'Last modified: ' can have up to 10 characters before (they are retained).
 " Restores cursor and window position using save_cursor variable.
@@ -83,3 +80,14 @@ autocmd FileType go compiler go
 
 " Go language gofmt
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+" Set up a absolute to relative line number toggle.
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
