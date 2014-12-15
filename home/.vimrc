@@ -91,3 +91,8 @@ function! NumberToggle()
 endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
+
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
+map <C-t> <esc>:tabnew<CR>
