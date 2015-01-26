@@ -12,3 +12,9 @@ alias cls="clear && ls"
 function cs() {
   cd "$@" && ls
 }
+
+# Git-based shortcuts.
+alias pull='git pull'
+alias commit='git commit'
+alias push='git push'
+alias unstage='git reset HEAD'
