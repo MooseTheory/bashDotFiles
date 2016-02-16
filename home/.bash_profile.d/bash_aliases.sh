@@ -18,3 +18,5 @@ alias pull='git pull'
 alias commit='git commit'
 alias push='git push'
 alias unstage='git reset HEAD'
+
+alias etcdctl='etcdctl --peers 192.168.11.188:4001'

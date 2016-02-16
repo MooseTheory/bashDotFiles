@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # Attempt to detect the current OS.
-if [ -f /etc/lsb_release ]; then
+if [ -f /etc/os-release ]; then
+  . /etc/os-release
+  export OS_DISTRO=$NAME
+  export OS_VERSION=$VERSION_ID
+elif [ -f /etc/lsb_release ]; then
   . /etc/lsb_release
   export OS_DISTRO=$DISTRIB_ID
   export OS_VERSION=$DISTRIB_RELEASE
