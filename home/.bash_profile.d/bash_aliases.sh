@@ -20,3 +20,7 @@ alias push='git push'
 alias unstage='git reset HEAD'
 
 alias etcdctl='etcdctl --peers 192.168.11.188:4001'
+alias awsetcd='etcdctl --endpoints http://internal-etcdbalancer-55323124.us-east-1.elb.amazonaws.com:2379'
+
+# Alias for The Fuck
+eval "$(thefuck --alias)"

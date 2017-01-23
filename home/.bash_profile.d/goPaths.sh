@@ -7,5 +7,12 @@ fi
 
 if [[ "$OS_DISTRO" == "Ubuntu" ]]; then
   export GOPATH="$HOME/go"
+  export PATH=$PATH:$GOPATH/bin
+  export GOROOT="/usr/local/go"
+fi
+
+if [[ "$OS_DISTRO" == "OSX" ]]; then
+  export GOPATH="$HOME/go"
+  export PATH=$PATH:$GOPATH/bin
   export GOROOT="/usr/local/go"
 fi

@@ -4,7 +4,7 @@ if [ "$OS_DISTRO" == "OSX" ]; then
   alias canhaz="brew search"
 
   # Enable homebrew autocomplete
-  source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+  source `brew --prefix`/etc/bash_completion.d/brew
 
   # Add paths that homebrew wants before OSX's default path.
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
